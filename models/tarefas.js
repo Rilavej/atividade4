@@ -1,30 +1,35 @@
-import connection from "../config/connection.js"
+import connection from "./schema.js"
 
-async function createTable(tabela, campo1, campo2, campo3, campo4) {
+ var lista = [`tarefa`, `titulo`, `descricao`, `prazo`, `status`]
+
+// async function createTable(lista) {
+
     try {
-        const result =  await connection.query(`
-            CREATE TABLE IF NOT EXISTS ? (
-                id INT AUTO_INCREMENT PRIMARY KEY
-                ? VARCHAR(50), 
-                ? VARCHAR(50),
-                ? VARCHAR(50),
-                ? VARCHAR(50)
-            );`,
-            [tabela, campo1, campo2, campo3, campo4]
-        )
-        console.log(result)
         console.log("### CREATE TABLE IF NOT EXISTS")
+
+        const result = await connection.query(
+            `CREATE TABLE IF NOT EXISTS ${lista[0]} (
+                id INT AUTO_INCREMENT PRIMARY KEY, 
+                ${lista[1]} VARCHAR(50), 
+                ${lista[2]} VARCHAR(50), 
+                ${lista[3]} VARCHAR(50), 
+                ${lista[4]} VARCHAR(50)
+            )`/* ,
+            lista */
+            )
+        console.log(result)
+
     } catch (err) {
         console.log(err)
     }
-}
-createTable("tarefa", "titulo", "descricao", "prazo", "status")
+// }
+// createTable(`tarefa`, `titulo`, `descricao`, `prazo`, `status`)
 
 
 async function getTarefas() {
     try {
-        const result = await connection.execute(`SELECT * FROM tarefas;`)
         console.log("#### SELECT * FROM tarefas;")
+        const result = await connection.execute(`SELECT * FROM tarefas;`)
         return result
 
     } catch (err) {

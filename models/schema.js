@@ -1,13 +1,14 @@
 import connection from "../config/connection.js"
 
 try {
-    const result = await connection.query(`CREATE DATABASE IF NOT EXISTS atividade4;`)
-    console.log(result)
+    console.log("# `CREATE DATABASE IF NOT EXISTS atividade4;`")
+    console.log(await connection.query(`CREATE DATABASE IF NOT EXISTS atividade4;`))
     
-    const result2 = await connection.query(`USE atividade4;`)
-    console.log(result)
+    console.log(`## USE atividade4;`)
+    console.log(await connection.query(`USE atividade4;`))
 
 } catch (err) {
     console.log(err)
 }
 
+export default connection

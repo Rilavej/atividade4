@@ -12,10 +12,10 @@ const connection = await (async () => {
             password: process.env.MYSQL_PASSWORD, 
         })
 
-        const connection = await pool.getConnection()
+        // const connection = await pool.getConnection()
 
         console.log("Conexão com servidor de banco de dados estabelecida.")
-        return connection
+        return pool
     }
     catch (err) {
         console.log(err)
