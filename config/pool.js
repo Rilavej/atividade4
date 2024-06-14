@@ -1,4 +1,4 @@
-import { createPool } from "mysql2/promise";
+import mysql2 from "mysql2/promise";
 
 import { config } from "dotenv";
 config()
@@ -6,7 +6,7 @@ config()
 const pool = await (async () => {
     
     try {
-        const pool = createPool({
+        const pool = mysql2.createPool({
             host: process.env.MYSQL_HOST, 
             user: process.env.MYSQL_USER, 
             password: process.env.MYSQL_PASSWORD, 
