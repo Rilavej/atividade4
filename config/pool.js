@@ -14,7 +14,7 @@ const pool = await (async () => {
         
         console.log("Conexão com servidor de banco de dados estabelecida.")
         return pool
-
+        
         // const connection = await pool.getConnection()
 
     }

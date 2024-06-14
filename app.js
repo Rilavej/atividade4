@@ -1,6 +1,6 @@
 import express, { urlencoded, json } from "express"
 const app = express()
-import router from "./routes/router"
+import router from "./routes/router.js"
 
 app.use(urlencoded({extended: true}))
 app.use(json())

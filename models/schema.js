@@ -38,4 +38,4 @@ var lista = ["tarefa", "titulo", "descricao", "prazo", "status"]
 
 
 
-// export default pool
+export default pool

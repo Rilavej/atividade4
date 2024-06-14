@@ -1,7 +1,10 @@
 import { Router } from "express"
 const router = Router()
-import { teste } from "../controllers/controller.js"
+import controller from "../controllers/controller.js"
 
-router.get("/teste", teste)
+router.get("/teste", controller.teste)
+router.get("/", controller.getTarefas)
+router.get("/tarefas", controller.getTarefas)
+
 
 export default router
