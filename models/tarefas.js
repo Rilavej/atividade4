@@ -25,7 +25,7 @@ async function getTarefas() {
         console.log(`#####5 SELECT * FROM tarefa`)
         const result = await pool.execute(`SELECT * FROM tarefa`)
         console.log(result)
-        return result
+        return result[0]
 
     } catch (err) {
         console.error(err)

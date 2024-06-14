@@ -7,8 +7,8 @@ controller.teste = (req, res) => {
 }
 
 controller.getTarefas = async (req, res) => {
-    const results = await getTarefas()
-    res.status(200).send(results)
+    const rows = await getTarefas()
+    res.status(200).send(rows)
 }
 
 export default controller
