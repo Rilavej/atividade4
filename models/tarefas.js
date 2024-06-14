@@ -1,4 +1,4 @@
-import connection from "./schema.js"
+import pool from "./schema.js"
 
  var lista = [`tarefa`, `titulo`, `descricao`, `prazo`, `status`]
 
@@ -7,7 +7,7 @@ import connection from "./schema.js"
     try {
         console.log("### CREATE TABLE IF NOT EXISTS")
 
-        const result = await connection.query(
+        const result = await pool.query(
             `CREATE TABLE IF NOT EXISTS ${lista[0]} (
                 id INT AUTO_INCREMENT PRIMARY KEY, 
                 ${lista[1]} VARCHAR(50), 
@@ -29,7 +29,7 @@ import connection from "./schema.js"
 async function getTarefas() {
     try {
         console.log("#### SELECT * FROM tarefas;")
-        const result = await connection.execute(`SELECT * FROM tarefas;`)
+        const result = await pool.execute(`SELECT * FROM tarefas;`)
         return result
 
     } catch (err) {
