@@ -1,4 +1,4 @@
-const connection = require("../config/connection.js")
+const connection = require("../config/connection.js").default
 
 async function createTable(tabela, campo1, campo2, campo3, campo4) {
     try {

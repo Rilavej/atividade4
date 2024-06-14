@@ -1,9 +1,9 @@
-const mysql = require("mysql2/promise")
-const sql = require("../models/schema.js")
+import { createPool } from "mysql2/promise";
+import sql from "../models/schema.js";
 
 const connection = (async () => {
     try {
-        const pool = mysql.createPool({
+        const pool = createPool({
             user: "root",
             password: "rilave",
             host: "192.168.3.9",
@@ -60,4 +60,4 @@ const connection = (async () => {
     }
 })();
 
-module.exports = connection
+export default connection

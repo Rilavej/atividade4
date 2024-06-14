@@ -1,12 +1,12 @@
-const mysql = require("mysql2/promise")
+import { createPool } from "mysql2/promise";
 
-const dotenv = require("dotenv")
-dotenv.config()
+import { config } from "dotenv";
+config()
 
 const connection = (async () => {
     
     try {
-        const pool = mysql.createPool({
+        const pool = createPool({
             host: process.env.MYSQL_HOST, 
             user: process.env.MYSQL_USER, 
             password: process.env.MYSQL_PASSWORD, 
@@ -22,4 +22,4 @@ const connection = (async () => {
 
 })();
 
-module.exports = connection
+export default connection

@@ -1,9 +1,9 @@
-const express = require("express")
+import express, { urlencoded, json } from "express"
 const app = express()
-const router = require("./routes/router")
+import router from "./routes/router"
 
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
+app.use(urlencoded({extended: true}))
+app.use(json())
 app.use(router)
 
 const PORT = 3000
