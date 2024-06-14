@@ -1,4 +1,4 @@
-const connection = require("../config/connection.js").default
+import connection from "../config/connection.js"
 
 async function createTable(tabela, campo1, campo2, campo3, campo4) {
     try {
@@ -32,4 +32,4 @@ async function getTarefas() {
     }
 }
 
-module.exports = getTarefas
+export default getTarefas

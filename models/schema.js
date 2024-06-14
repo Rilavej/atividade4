@@ -1,5 +1,13 @@
-const sql = ["CREATE DATABASE IF NOT EXISTS atividade4;", "USE atividade4;"]
-console.log(sql[0])
-console.log(sql[1])
+import connection from "../config/connection.js"
 
-export default sql
+try {
+    const result = await connection.query(`CREATE DATABASE IF NOT EXISTS atividade4;`)
+    console.log(result)
+    
+    const result2 = await connection.query(`USE atividade4;`)
+    console.log(result)
+
+} catch (err) {
+    console.log(err)
+}
+

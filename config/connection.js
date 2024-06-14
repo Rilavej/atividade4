@@ -3,7 +3,7 @@ import { createPool } from "mysql2/promise";
 import { config } from "dotenv";
 config()
 
-const connection = (async () => {
+const connection = await (async () => {
     
     try {
         const pool = createPool({
@@ -12,12 +12,13 @@ const connection = (async () => {
             password: process.env.MYSQL_PASSWORD, 
         })
 
-        const conn = await pool.getConnection()
+        const connection = await pool.getConnection()
+
         console.log("Conexão com servidor de banco de dados estabelecida.")
-        return conn
+        return connection
     }
     catch (err) {
-
+        console.log(err)
     }
 
 })();
