@@ -1,9 +1,9 @@
 import pool from "../config/pool.js"
 
-import schema from "./schema.js"
+import pool from "./schema.js"
 // espera o carregamento do modulo schema
 // await sem efeito porque já foi declarado em cada função do modulo
-/* await */ schema
+/* await */ pool
 
 async function insertInto(tabela){
     try {
