@@ -1,20 +1,18 @@
 import pool from "../config/pool.js"
 import schemaDefinition from "./schema.js"
 
-await schemaDefinition
-console.log("### data defined")
+await schemaDefinition.then(() => console.log("DATA DEFINED"))
 
 const tarefa = {}
 
 tarefa.insertInto = async function ( tabela ){
     try {
-        console.log (`####4 INSERT INTO ? VALUES (?, ?, ?, ?)`)
-        const result = await pool.execute(
+        const [result] = await pool.execute(
             `INSERT INTO ${tabela.tableName} (${tabela.colunas[0]}, ${tabela.colunas[1]}, ${tabela.colunas[2]}, ${tabela.colunas[3]})
              VALUES (?, ?, ?, ?)`, tabela.values)
-        console.log(result[0])
+        console.log("INSERT INTO")
+        console.log(result)
         return result
-
     } catch (err) {
         console.error(err)
         return err
@@ -23,11 +21,10 @@ tarefa.insertInto = async function ( tabela ){
 
 tarefa.getTarefas = async function () {
     try {
-        console.log(`#####5 SELECT * FROM tarefa`)
-        const result = await pool.execute(`SELECT * FROM tarefa`)
+        const [result] = await pool.execute(`SELECT * FROM tarefa`)
+        console.log(`SELECT * FROM tarefa`)
         console.log(result)
-        return result[0]
-
+        return result
     } catch (err) {
         console.error(err)
         return err
