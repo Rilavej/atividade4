@@ -1,17 +1,18 @@
 import pool from "../config/pool.js"
+import schemaDefinition from "./schema.js"
 
-import pool from "./schema.js"
-// espera o carregamento do modulo schema
-// await sem efeito porque já foi declarado em cada função do modulo
-/* await */ pool
+await schemaDefinition
+console.log("### data defined")
 
-async function insertInto(tabela){
+const tarefa = {}
+
+tarefa.insertInto = async function ( tabela ){
     try {
         console.log (`####4 INSERT INTO ? VALUES (?, ?, ?, ?)`)
         const result = await pool.execute(
-            `INSERT INTO ${tabela.nome} (${tabela.colunas[0]}, ${tabela.colunas[1]}, ${tabela.colunas[2]}, ${tabela.colunas[3]})
+            `INSERT INTO ${tabela.tableName} (${tabela.colunas[0]}, ${tabela.colunas[1]}, ${tabela.colunas[2]}, ${tabela.colunas[3]})
              VALUES (?, ?, ?, ?)`, tabela.values)
-        console.log(result)
+        console.log(result[0])
         return result
 
     } catch (err) {
@@ -20,7 +21,7 @@ async function insertInto(tabela){
     }
 }
 
-async function getTarefas() {
+tarefa.getTarefas = async function () {
     try {
         console.log(`#####5 SELECT * FROM tarefa`)
         const result = await pool.execute(`SELECT * FROM tarefa`)
@@ -36,12 +37,13 @@ async function getTarefas() {
 // para teste
 var tabela = 
     {
-        nome: "tarefa",
+        tableName: "tarefa",
         colunas: [`titulo`, `descricao`, `prazo`, `status`],
         values: ['fazer CRUD', 'concluir atividade 4', 'para ontem', 'atrasado'] 
     }
 
 console.log(tabela)
-insertInto(tabela)
 
-export default getTarefas
+tarefa.insertInto(tabela)
+
+export default tarefa

@@ -1,4 +1,4 @@
-import getTarefas from "../models/tarefas.js"
+import tarefa from "../models/tarefas.js"
 
 const controller = {}
 
@@ -7,7 +7,7 @@ controller.teste = (req, res) => {
 }
 
 controller.getTarefas = async (req, res) => {
-    const rows = await getTarefas()
+    const rows = await tarefa.getTarefas()
     res.status(200).send(rows)
 }
 
